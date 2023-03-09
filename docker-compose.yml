@@ -1,0 +1,40 @@
+version: '3.4'
+
+x-backend:
+  &backend
+  build:
+    context: .
+    dockerfile: Dockerfile.dev
+  environment:
+    RAILS_ENV: development
+    DB_USERNAME: root
+    DB_PASSWORD: secret
+    DB_HOST: db
+    DB_PORT: 3306
+    DB_NAME: es_db
+    SECRET_KEY_BASE: STUB
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/backend:rw
+    - bundle_cache:/bundle
+
+services:
+  backend:
+    <<: *backend
+    ports:
+      - 3000:3000/tcp
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: elasticsearch_rails_development
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+    - mysql:/var/lib/mysql
+    hostname: mysql
+volumes:
+  bundle_cache:
+  mysql:
