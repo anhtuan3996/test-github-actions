@@ -95,6 +95,7 @@ jobs:
           MYSQL_HOST: 127.0.0.1
           # DATABASE_PORT: 3306
         run: |
+          sudo apt-get install -y mysql-client libmysqlclient-dev
           bundle exec rake db:setup
       - name: Run tests
         run: bin/rspec
