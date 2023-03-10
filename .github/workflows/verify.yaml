@@ -90,8 +90,8 @@ jobs:
         env:
           RAILS_ENV: test
           MYSQL_HOST: localhost
-        run: |
-          bundle exec rake db:setup
+        # run: |
+        #   bundle exec rake db:setup
 
       - name: Run tests
         run: bin/rspec
