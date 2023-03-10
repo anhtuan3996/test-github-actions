@@ -75,7 +75,7 @@ jobs:
       - name: Install packages
         run: |
           npm install --pure-lockfile
-          
+
       - name: Install Ruby packages
         run: |
           bundle install
@@ -85,7 +85,7 @@ jobs:
           RAILS_ENV: test
           MYSQL_HOST: localhost
         run: |
-          bin/rails db:setup
+          bundle exec rake db:setup
 
       - name: Run tests
         run: bin/rspec
