@@ -44,7 +44,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: elasticsearch_rails_development
+          MYSQL_DATABASE: elasticsearch_rails_test
           MYSQL_ROOT_PASSWORD: secret
         ports: ["3306:3306"]
       es:
@@ -79,8 +79,7 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: myapp
+          MYSQL_HOST: localhost
         run: |
           bin/rails db:setup
 
