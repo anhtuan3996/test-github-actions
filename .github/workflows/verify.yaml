@@ -46,7 +46,6 @@ jobs:
         env:
           MYSQL_HOST: 127.0.0.1
           MYSQL_DB: elasticsearch_rails_test
-          MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_PASSWORD:
         ports:
