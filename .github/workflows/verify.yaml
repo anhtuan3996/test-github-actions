@@ -95,6 +95,8 @@ jobs:
           # DATABASE_PORT: 3306
         run: |
           sudo apt-get install -y mysql-client libmysqlclient-dev
-          bundle exec rake db:setup
+          sudo service mysql start
+          bundle exec rails db:prepare
+          bundle exec rails test
       - name: Run tests
         run: bin/rspec
