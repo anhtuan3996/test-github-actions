@@ -49,7 +49,7 @@ jobs:
         ports: ["3306:3306"]
       es:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
-        environment:
+        env:
           - node.name=es
           - cluster.name=cluster
           - discovery.seed_hosts=es
