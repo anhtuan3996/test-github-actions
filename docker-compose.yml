@@ -57,6 +57,7 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.5.0
+    platform: linux/x86_64
     environment:
       - ELASTICSEARCH_HOSTS=http://es:9200
     depends_on:

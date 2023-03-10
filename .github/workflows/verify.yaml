@@ -1,13 +1,88 @@
-name: verify
-run-name: ${{ github.actor }} Verify
+name: Verify
+run-name: ${{ github.actor }} is Verifying
 on: [push]
+
 jobs:
-  check-bats-version:
+  linters:
+    name: Linters
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+
+      - name: Run linters
+        run: |
+          bin/rubocop --parallel
+          bin/stylelint
+          bin/prettier
+          bin/eslint
+
+      - name: Run security checks
+        run: |
+          bin/bundler-audit --update
+          bin/brakeman -q -w2
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: elasticsearch_rails_development
+          MYSQL_ROOT_PASSWORD: secret
+        ports: ["3306:3306"]
+      es:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+        environment:
+          - node.name=es
+          - cluster.name=cluster
+          - discovery.seed_hosts=es
+          - bootstrap.memory_lock=true
+          - discovery.type=single-node
+          - ES_JAVA_OPTS=-Xms512m -Xmx512m
+          - http.port=9200
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+
+      - name: Setup test database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: myapp
+        run: |
+          bin/rails db:setup
+
+      - name: Run tests
+        run: bin/rspec
