@@ -49,5 +49,23 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'dotenv-rails',              '~> 2.7.6'
+  gem 'byebug',                    '~> 9.0.6', platform: :mri
+  gem 'rspec-rails',               '~> 3.6.0'
+  gem 'factory_girl_rails',        '~> 4.8.0'
+  gem 'rails-controller-testing',  '~> 1.0.1',  require: false
+  gem 'rspec-its',                 '~> 1.2.0',  require: false
+  gem 'shoulda-matchers',          '~> 3.1.1',  require: false
+  gem 'shoulda-callback-matchers', '~> 1.1.4',  require: false
+  gem 'json_expressions',          '~> 0.9.0',  require: false
+  gem 'fake_ftp',                  '~> 0.3.0',  require: false
+  gem 'simplecov',                 '~> 0.14.1', require: false
+  gem 'simplecov-console',         '~> 0.4.1',  require: false
+  gem 'brakeman',                  '~> 3.6.2',  require: false
+  gem 'rubocop',                   '~> 0.49.1', require: false
+  gem 'scss_lint',                 '~> 0.53.0', require: false
+  gem 'haml_lint',                 '~> 0.25.1', require: false
+  gem 'jasmine',                   '~> 3.4'
+  gem 'timecop',                   '0.9.1'
 end
 
