@@ -44,8 +44,8 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: elasticsearch_rails_test
           MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: elasticsearch_rails_test
         ports: ["3306:3306"]
       es:
         image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
