@@ -27,7 +27,7 @@ jobs:
 
       - name: Run linters
         run: |
-          rubocop
+                bundle exec rubocop
       # - name: Run security checks
       #   run: |
       #     bin/bundler-audit --update
