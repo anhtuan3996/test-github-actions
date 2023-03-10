@@ -50,4 +50,5 @@ group :development do
   # gem "spring"
   gem 'dotenv-rails', '~> 2.7.6'
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
