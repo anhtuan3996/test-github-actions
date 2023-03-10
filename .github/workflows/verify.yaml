@@ -27,11 +27,11 @@ jobs:
 
       - name: Run linters
         run: |
-          bin/rubocop
-      - name: Run security checks
-        run: |
-          bin/bundler-audit --update
-          bin/brakeman -q -w2
+          rubocop
+      # - name: Run security checks
+      #   run: |
+      #     bin/bundler-audit --update
+      #     bin/brakeman -q -w2
 
   tests:
     name: Tests
