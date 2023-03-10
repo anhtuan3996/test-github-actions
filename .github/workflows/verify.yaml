@@ -44,8 +44,9 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
+          MYSQL_HOST: 127.0.0.1
           MYSQL_ROOT_PASSWORD: secret
-          # MYSQL_DATABASE: elasticsearch_rails_test
+          MYSQL_DB: elasticsearch_rails_test
         ports:
           - 3306/tcp
       es:
@@ -90,6 +91,7 @@ jobs:
         env:
           RAILS_ENV: test
           # MYSQL_HOST: localhost
+          DATABASE_PORT: 3306
         run: |
           bundle exec rake db:setup
 
