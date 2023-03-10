@@ -15,7 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: secret
-  host: localhost
+  host: 127.0.0.1
 
 development:
   <<: *default
@@ -26,8 +26,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: 127.0.0.1
   database: elasticsearch_rails_test
   username: test_user
+  port: 3306
+  password: secret
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
