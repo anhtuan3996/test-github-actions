@@ -75,6 +75,10 @@ jobs:
       - name: Install packages
         run: |
           npm install --pure-lockfile
+          
+      - name: Install Ruby packages
+        run: |
+          bundle install
 
       - name: Setup test database
         env:
