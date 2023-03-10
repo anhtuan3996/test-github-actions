@@ -1,19 +1,18 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby '3.1.3'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4", ">= 7.0.4.2"
+gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 
 # Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+gem 'mysql2', '~> 0.5'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem 'puma', '~> 5.0'
 
-
-#Elastic search
+# Elastic search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
@@ -30,10 +29,10 @@ gem 'elasticsearch-rails'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -43,29 +42,11 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'dotenv-rails',              '~> 2.7.6'
-  gem 'byebug',                    '~> 9.0.6', platform: :mri
-  gem 'rspec-rails',               '~> 3.6.0'
-  gem 'factory_girl_rails',        '~> 4.8.0'
-  gem 'rails-controller-testing',  '~> 1.0.1',  require: false
-  gem 'rspec-its',                 '~> 1.2.0',  require: false
-  gem 'shoulda-matchers',          '~> 3.1.1',  require: false
-  gem 'shoulda-callback-matchers', '~> 1.1.4',  require: false
-  gem 'json_expressions',          '~> 0.9.0',  require: false
-  gem 'fake_ftp',                  '~> 0.3.0',  require: false
-  gem 'simplecov',                 '~> 0.14.1', require: false
-  gem 'simplecov-console',         '~> 0.4.1',  require: false
-  gem 'brakeman',                  '~> 3.6.2',  require: false
-  gem 'rubocop',                   '~> 0.49.1', require: false
-  gem 'scss_lint',                 '~> 0.53.0', require: false
-  gem 'haml_lint',                 '~> 0.25.1', require: false
-  gem 'jasmine',                   '~> 3.4'
-  gem 'timecop',                   '0.9.1'
+  gem 'dotenv-rails', '~> 2.7.6'
 end
-

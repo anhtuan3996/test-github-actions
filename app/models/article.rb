@@ -1,3 +1,3 @@
 class Article < ApplicationRecord
-    include Searchable
+  include Searchable
 end
