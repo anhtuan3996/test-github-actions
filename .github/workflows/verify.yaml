@@ -92,7 +92,7 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          # MYSQL_HOST: localhost
+          MYSQL_HOST: localhost
           # DATABASE_PORT: 3306
         run: |
           bundle exec rake db:setup
