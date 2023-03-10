@@ -19,11 +19,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
+          cache: npm
 
       - name: Install packages
         run: |
-          yarn install --pure-lockfile
+          npm install --pure-lockfile
 
       - name: Run linters
         run: |
@@ -70,11 +70,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          cache: yarn
+          cache: npm
 
       - name: Install packages
         run: |
-          yarn install --pure-lockfile
+          npm install --pure-lockfile
 
       - name: Setup test database
         env:
