@@ -92,7 +92,7 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
+          MYSQL_HOST: localhost
           # DATABASE_PORT: 3306
         run: |
           sudo apt-get install -y mysql-client libmysqlclient-dev
