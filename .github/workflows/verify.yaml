@@ -86,6 +86,8 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
+          ES_PORT: ${{ job.services.elasticsearch.ports[9200] }}
+          ES_HOST: http://127.0.0.1
         run: |
           sudo apt-get install --no-install-recommends -y build-essential libpq-dev default-libmysqlclient-dev default-mysql-client
           bundle exec rails db:prepare
