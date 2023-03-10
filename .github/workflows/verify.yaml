@@ -95,7 +95,7 @@ jobs:
           # MYSQL_HOST: localhost
           DATABASE_PORT: 3306
         run: |
+          sudo service mysql start
           bundle exec rake db:setup
-
       - name: Run tests
         run: bin/rspec
