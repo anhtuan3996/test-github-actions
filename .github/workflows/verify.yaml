@@ -86,8 +86,6 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          MYSQL_HOST: localhost
-          # DATABASE_PORT: 3306
         run: |
           sudo apt-get install --no-install-recommends -y build-essential libpq-dev default-libmysqlclient-dev default-mysql-client
           bundle exec rails db:prepare
