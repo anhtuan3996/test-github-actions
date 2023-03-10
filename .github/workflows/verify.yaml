@@ -94,4 +94,4 @@ jobs:
           bundle exec rails test
       - name: Run tests
         run: |
-          bundle exec rails rspec
+          bundle exec rspec
