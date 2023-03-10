@@ -93,4 +93,5 @@ jobs:
           bundle exec rails db:prepare
           bundle exec rails test
       - name: Run tests
-        run: bin/rspec
+        run: |
+        bundle exec rails rspec
